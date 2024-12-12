@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @AllArgsConstructor
@@ -22,5 +23,9 @@ public class PatientRestController {
     @GetMapping("all")
     public List<Patient> allPatient(){
         return iServicePatient.readAllPatient();
+    }
+    @GetMapping("{id}")
+    public Optional<Patient> getPatientById(@PathVariable int id){
+        return iServicePatient.getById(id);
     }
 }
